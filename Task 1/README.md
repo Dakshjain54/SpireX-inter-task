@@ -63,7 +63,6 @@ Personal-Portfolio-Card/
 
 ---
 
-
 ## 📱 Responsive Design
 
 The project is optimized for:
@@ -75,13 +74,8 @@ The project is optimized for:
 
 ---
 
-📸 Preview
-
-Add screenshots of your project inside an assets/images/ folder and include them here.
-
-Example:
-
-assets/images/preview.png
+## 📸 Preview
+https://portfoliocars01.netlify.app/
 
 ---
 
