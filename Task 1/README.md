@@ -75,6 +75,16 @@ The project is optimized for:
 
 ---
 
+📸 Preview
+
+Add screenshots of your project inside an assets/images/ folder and include them here.
+
+Example:
+
+assets/images/preview.png
+
+---
+
 ## 👨‍💻 Author
 
 **Daksh Jain**
