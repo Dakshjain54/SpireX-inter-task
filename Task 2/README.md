@@ -101,7 +101,7 @@ This project is optimized for:
 ---
 
 ## 📸 Preview
-
+https://simple-resume-webpage.netlify.app/
 ---
 
 ## 👨‍💻 Author
