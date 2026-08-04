@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple, modern, and responsive navigation bar with search, notifications, and dark/light theme mode built using HTML5, CSS3, and Vanilla JavaScript.">
+    <title>Responsive Navigation Bar - Search & Theme Enabled</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Container -->
+    <header class="header" id="header">
+        <nav class="navbar" aria-label="Main Navigation">
+            <!-- Brand Logo -->
+            <a href="#home" class="nav-logo">
+                NavBar<span class="logo-accent">.</span>
+            </a>
+
+            <!-- Navigation Links Wrapper -->
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Search Box (Inside Menu Drawer) -->
+                <div class="mobile-search-wrapper">
+                    <div class="search-box">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" class="search-input mobile-search-input" placeholder="Search pages or topics..." aria-label="Search">
+                    </div>
+                </div>
+
+                <!-- Mobile Login Button -->
+                <div class="nav-actions-mobile">
+                    <a href="#login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+
+            <!-- Navbar Right Side Controls (Search, Notification, Theme, Desktop Login, Mobile Hamburger) -->
+            <div class="nav-controls">
+                <!-- Desktop Search Bar with Live Results Dropdown -->
+                <div class="search-wrapper" id="search-wrapper">
+                    <div class="search-box" id="search-box">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" class="search-input" id="search-input" placeholder="Search sections..." aria-label="Search">
+                        <button class="search-clear-btn" id="search-clear-btn" aria-label="Clear search" title="Clear">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Live Search Results Popup -->
+                    <div class="search-results-dropdown" id="search-results-dropdown">
+                        <div class="search-results-header">Search Results</div>
+                        <ul class="search-results-list" id="search-results-list">
+                            <!-- Results will be dynamically populated via JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Notification Bell Icon & Popup Dropdown -->
+                <div class="notification-container" id="notification-container">
+                    <button class="icon-btn notification-btn" id="notification-btn" aria-label="View Notifications" aria-expanded="false" title="Notifications">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notification-badge" id="notification-badge">3</span>
+                    </button>
+
+                    <!-- Notification Popup Card -->
+                    <div class="notification-dropdown" id="notification-dropdown">
+                        <div class="notification-header">
+                            <h3>Notifications</h3>
+                            <button class="mark-read-btn" id="mark-read-btn">Clear all</button>
+                        </div>
+                        <ul class="notification-list" id="notification-list">
+                            <li class="notification-item unread">
+                                <div class="notification-icon-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Welcome to the enhanced responsive navbar demo!</p>
+                                    <span class="notification-time">Just now</span>
+                                </div>
+                            </li>
+                            <li class="notification-item unread">
+                                <div class="notification-icon-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Dark & Light theme switcher is active.</p>
+                                    <span class="notification-time">5 mins ago</span>
+                                </div>
+                            </li>
+                            <li class="notification-item unread">
+                                <div class="notification-icon-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Live search bar is ready to test.</p>
+                                    <span class="notification-time">1 hour ago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dark / Light Theme Toggle Button -->
+                <button class="icon-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Dark and Light Mode" title="Toggle Theme">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Login Button -->
+                <div class="nav-actions-desktop">
+                    <a href="#login" class="btn btn-primary">Login</a>
+                </div>
+
+                <!-- Hamburger Menu Icon (Mobile/Tablet Toggle) -->
+                <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area for Demonstration -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <span class="hero-badge">Modern & Interactive UI</span>
+                <h1>Responsive Navigation Bar <br><span class="highlight">With Live Search & Themes</span></h1>
+                <p>Try out live section search, notification popup card, and toggle between Light and Dark mode using the theme button above.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="#services" class="btn btn-secondary btn-large">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Placeholder -->
+        <section id="about" class="content-section light-bg">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>This navigation bar includes smooth transitions for both light and dark themes across every component on the page.</p>
+            </div>
+        </section>
+
+        <!-- Services Section Placeholder -->
+        <section id="services" class="content-section">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>Instant live search suggestions enable seamless page navigation and content discovery.</p>
+            </div>
+        </section>
+
+        <!-- Portfolio Section Placeholder -->
+        <section id="portfolio" class="content-section light-bg">
+            <div class="container">
+                <h2>Portfolio</h2>
+                <p>Explore a collection of lightweight, vanilla JavaScript UI components crafted for clean web design.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section Placeholder -->
+        <section id="contact" class="content-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have questions or feedback? Feel free to reach out anytime.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Responsive Navbar Demo. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
