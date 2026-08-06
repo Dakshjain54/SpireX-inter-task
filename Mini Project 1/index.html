@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors - Modern Premium Game</title>
+  <meta name="description" content="A modern, colorful, interactive Rock Paper Scissors game featuring sound effects, Dark/Light mode, glassmorphism UI, and smooth animations.">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <!-- Watermark Background -->
+  <div class="watermark-bg" aria-hidden="true">
+    <span class="wm-icon wm-1">🪨</span>
+    <span class="wm-icon wm-2">📄</span>
+    <span class="wm-icon wm-3">✂️</span>
+    <span class="wm-icon wm-4">🪨</span>
+    <span class="wm-icon wm-5">📄</span>
+    <span class="wm-icon wm-6">✂️</span>
+  </div>
+
+  <!-- Confetti Particle Container -->
+  <div class="confetti-container" id="confetti-container" aria-hidden="true"></div>
+
+  <!-- Main Game Container -->
+  <main class="game-container">
+    <!-- Top Header & Dark/Light Toggle -->
+    <header class="game-header">
+      <div class="header-top">
+        <h1 class="game-title">ROCK PAPER SCISSORS</h1>
+        <!-- Dark / Light Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme Mode">
+          <span class="theme-icon" id="theme-icon">🌙</span>
+          <span class="theme-text" id="theme-text">Dark</span>
+        </button>
+      </div>
+      <p class="game-subtitle">First player to reach <span class="highlight">5 points</span> wins!</p>
+    </header>
+
+    <!-- Glowing Scoreboard -->
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="score-card player-card" id="player-score-card">
+        <span class="score-label">PLAYER</span>
+        <span class="score-value" id="player-score">0</span>
+      </div>
+      <div class="score-divider">
+        <span>VS</span>
+      </div>
+      <div class="score-card computer-card" id="computer-score-card">
+        <span class="score-label">COMPUTER</span>
+        <span class="score-value" id="computer-score">0</span>
+      </div>
+    </section>
+
+    <!-- Battle Showcase -->
+    <section class="battle-arena" aria-label="Current choices showcase">
+      <div class="choice-display" id="player-display">
+        <div class="choice-circle" id="player-circle">
+          <span class="choice-icon" id="player-icon">❓</span>
+        </div>
+        <span class="choice-name" id="player-name">Your Move</span>
+      </div>
+
+      <div class="battle-badge">
+        <span>⚡</span>
+      </div>
+
+      <div class="choice-display" id="computer-display">
+        <div class="choice-circle" id="computer-circle">
+          <span class="choice-icon" id="computer-icon">❓</span>
+        </div>
+        <span class="choice-name" id="computer-name">CPU Move</span>
+      </div>
+    </section>
+
+    <!-- Center: Choice Buttons -->
+    <section class="choices-container" aria-label="Game choices">
+      <button class="choice-btn float-btn-1" id="btn-rock" data-choice="rock" aria-label="Choose Rock">
+        <span class="btn-icon">🪨</span>
+        <span class="btn-label">Rock</span>
+      </button>
+
+      <button class="choice-btn float-btn-2" id="btn-paper" data-choice="paper" aria-label="Choose Paper">
+        <span class="btn-icon">📄</span>
+        <span class="btn-label">Paper</span>
+      </button>
+
+      <button class="choice-btn float-btn-3" id="btn-scissors" data-choice="scissors" aria-label="Choose Scissors">
+        <span class="btn-icon">✂️</span>
+        <span class="btn-label">Scissors</span>
+      </button>
+    </section>
+
+    <!-- Bottom: Result Message -->
+    <footer class="game-footer">
+      <div class="result-box" id="result-box">
+        <p class="result-message" id="result-message">Select 🪨 Rock, 📄 Paper, or ✂️ Scissors to begin!</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Winner Popup Modal -->
+  <div class="modal-overlay hidden" id="winner-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-badge trophy-animate" id="modal-badge">🏆</div>
+      <h2 class="modal-title" id="modal-title">Match Finished!</h2>
+      <p class="modal-subtitle" id="modal-subtitle">🏆 Congratulations! You Won!</p>
+      <div class="modal-score">
+        <span>Final Score: </span>
+        <strong id="modal-final-score">5 - 0</strong>
+      </div>
+      <button class="play-again-btn" id="play-again-btn">
+        <span class="btn-sparkle">✨</span> Play Again
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
