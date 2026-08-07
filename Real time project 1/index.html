@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoBin - Smart City Waste Management & Recycling Dashboard</title>
+  <meta name="description"
+    content="Modern Smart City Waste Management & Recycling Analytics Dashboard with real-time IoT bin monitoring, city map mockup, fleet status, and dynamic charts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+</head>
+
+<body>
+
+  <!-- Loading Screen Overlay -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader-content">
+      <div class="leaf-spinner">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M7 19C4 19 2 16.5 2 13.5C2 9.5 6 4 12 2C12 7 13.5 10 16 12C18.5 14 22 14.5 22 17.5C22 20 19.5 22 16.5 22C12.5 22 11.5 19.5 11.5 19.5"
+            stroke="#22c55e" stroke-linecap="round" />
+          <path d="M12 2C10.5 7.5 7.5 10.5 2 13.5" stroke="#06b6d4" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h2>EcoBin Smart City</h2>
+      <p>Initializing IoT Sensors & Dashboard...</p>
+    </div>
+  </div>
+
+  <!-- Background Decorative Watermark & Floating Eco Icons -->
+  <div class="bg-decorations" aria-hidden="true">
+    <div class="bg-watermark bin-watermark-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path
+          d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+      </svg>
+    </div>
+    <div class="bg-watermark truck-watermark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path
+          d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+      </svg>
+    </div>
+    <div class="bg-watermark tree-watermark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2L5 9h4l-3 6h5v7h2v-7h5l-3-6h4L12 2z" />
+      </svg>
+    </div>
+    <div class="bg-watermark recycle-watermark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M7 19l-3-5 2.5-1.5M17 19l3-5-2.5-1.5M12 4l4 7h-8zM4 14l4-7h8" />
+      </svg>
+    </div>
+
+    <!-- Floating Eco Icons -->
+    <div class="floating-icon icon-1">🍃</div>
+    <div class="floating-icon icon-2">♻️</div>
+    <div class="floating-icon icon-3">🌱</div>
+    <div class="floating-icon icon-4">🚛</div>
+    <div class="floating-icon icon-5">🗑️</div>
+    <div class="floating-icon icon-6">🌿</div>
+  </div>
+
+  <!-- Main Multi-Section Dashboard Container -->
+  <div class="dashboard-wrapper">
+
+    <!-- Top Navigation Header -->
+    <header class="top-nav glass-card" id="top">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#22c55e" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="logo-title">EcoBin <span class="badge-tag">IoT LIVE</span></h1>
+          <p class="logo-subtitle">Smart City Waste Management</p>
+        </div>
+      </div>
+
+      <!-- Quick Section Jump Links -->
+      <nav class="nav-section-links">
+        <a href="#section-1" class="nav-link active">Overview</a>
+        <a href="#section-2" class="nav-link">Analytics & Eco Score</a>
+        <a href="#section-3" class="nav-link">City Map & Logs</a>
+      </nav>
+
+      <!-- Live Clock & Status -->
+      <div class="header-center">
+        <div class="live-clock-badge glass-inset">
+          <span class="live-dot pulse-animation"></span>
+          <span id="live-clock-time">00:00:00 AM</span>
+          <span class="clock-divider">|</span>
+          <span id="live-clock-date">Mon, Jan 1</span>
+        </div>
+      </div>
+
+      <!-- User Actions & Notifications -->
+      <div class="nav-actions">
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="nav-icon-btn glass-hover" title="Toggle Dark / Light Theme">
+          <span id="theme-icon">🌙</span>
+          <span class="btn-label" id="theme-label">Dark</span>
+        </button>
+
+        <!-- Simulation Control Toggle -->
+        <button id="sim-toggle-btn" class="nav-icon-btn glass-hover" title="Toggle Real-Time Data Simulation">
+          <span id="sim-icon">⚡</span>
+          <span class="btn-label">Simulate</span>
+        </button>
+
+        <!-- Notification Bell -->
+        <div class="notification-wrapper">
+          <button id="notif-bell-btn" class="nav-icon-btn glass-hover" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            <span id="notif-badge" class="notif-badge pulse-badge">3</span>
+          </button>
+
+          <!-- Notification Dropdown Drawer -->
+          <div id="notif-dropdown" class="notif-dropdown glass-card hidden">
+            <div class="notif-header">
+              <h3>System Alerts</h3>
+              <button id="clear-notif-btn" class="text-btn">Clear All</button>
+            </div>
+            <div id="notif-list" class="notif-list"></div>
+          </div>
+        </div>
+
+        <!-- Profile Avatar -->
+        <div class="profile-avatar-wrapper">
+          <div class="avatar-ring">
+            <img src="avatar.png" alt="Admin Avatar" class="profile-img">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="profile-info">
+            <span class="profile-name">Daksh jain</span>
+            <span class="profile-role">Municipal Officer</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Overview & Bin Live Monitor -->
+    <section id="section-1" class="dashboard-section">
+
+      <!-- Top KPI Dashboard Metric Cards -->
+      <div class="metrics-row">
+        <!-- Card 1: Total Smart Bins -->
+        <div class="metric-card glass-card glass-hover">
+          <div class="card-icon-box bg-emerald">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-label">Total Smart Bins</span>
+            <div class="metric-value-row">
+              <h2 id="total-bins-val" class="metric-value">48</h2>
+              <span class="trend-badge trend-up">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                +4 Online
+              </span>
+            </div>
+            <p class="metric-subtext">Active IoT Sensors</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Bins Needing Pickup -->
+        <div class="metric-card glass-card glass-hover">
+          <div class="card-icon-box bg-danger">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-label">Bins Needing Pickup</span>
+            <div class="metric-value-row">
+              <h2 id="filled-bins-val" class="metric-value">12</h2>
+              <span id="filled-trend-tag" class="trend-badge trend-alert">
+                High Capacity
+              </span>
+            </div>
+            <p class="metric-subtext">Capacity ≥ 75%</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Normal Bins -->
+        <div class="metric-card glass-card glass-hover">
+          <div class="card-icon-box bg-cyan">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3" />
+            </svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-label">Normal Bins</span>
+            <div class="metric-value-row">
+              <h2 id="empty-bins-val" class="metric-value">36</h2>
+              <span class="trend-badge trend-up">
+                75% Safe
+              </span>
+            </div>
+            <p class="metric-subtext">Capacity &lt; 75%</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Recycling Efficiency -->
+        <div class="metric-card glass-card glass-hover">
+          <div class="card-icon-box bg-yellow">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-label">Recycling Efficiency</span>
+            <div class="metric-value-row">
+              <h2 id="efficiency-val" class="metric-value">88.5%</h2>
+              <span class="trend-badge trend-up">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                +3.2%
+              </span>
+            </div>
+            <p class="metric-subtext">Diversion Target Achieved</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Section 1 Split Grid -->
+      <div class="section-1-grid">
+
+        <!-- LEFT: Smart Bin Live Status & Filter Panel -->
+        <div class="grid-card glass-card bin-monitor-panel">
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="icon-bubble">🗑️</span>
+              <div>
+                <h3>Smart Waste Bin Status</h3>
+                <p class="subtitle">Real-time IoT fill & telemetry</p>
+              </div>
+            </div>
+            <!-- <button id="refresh-bins-btn" class="icon-action-btn" title="Refresh Telemetry"> -->
+            <!-- <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"> -->
+            <!-- <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/> -->
+            </svg>
+            </button>
+          </div>
+
+          <!-- 🎛️ Bin Filter Buttons -->
+          <div class="bin-filter-bar">
+            <span class="filter-label">Filter Bins:</span>
+            <div class="bin-filter-group">
+              <button class="bin-filter-btn active" data-bin-filter="all">All (4)</button>
+              <button class="bin-filter-btn" data-bin-filter="empty">Empty (&lt;40%)</button>
+              <button class="bin-filter-btn" data-bin-filter="half">Half Full (40-74%)</button>
+              <button class="bin-filter-btn" data-bin-filter="full">Full (&ge;75%)</button>
+            </div>
+          </div>
+
+          <!-- 4 Smart Bin Cards -->
+          <div class="bins-container" id="bins-container">
+
+            <!-- Bin 1: Green -->
+            <div class="bin-card glass-inset" id="bin-card-1" data-bin-id="1" data-fill-state="empty">
+              <div class="bin-visual-col">
+                <div class="bin-3d-tank">
+                  <div class="bin-fill-liquid bg-bin-green" id="bin-fill-1" style="height: 35%;">
+                    <div class="wave-overlay"></div>
+                  </div>
+                  <div class="bin-capacity-mark"></div>
+                </div>
+              </div>
+              <div class="bin-info-col">
+                <div class="bin-top-row">
+                  <span class="bin-tag bg-bin-green-pill">Bio / Organic</span>
+                  <span class="bin-id">Bin #01 (Central Market)</span>
+                </div>
+                <div class="bin-stat-row">
+                  <span class="bin-fill-percent" id="bin-percent-1">35%</span>
+                  <span class="status-badge badge-green" id="bin-status-1">
+                    <span class="dot"></span> Empty
+                  </span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-green" id="bin-bar-1" style="width: 35%;"></div>
+                </div>
+
+                <!-- IoT Signal Strength Indicator -->
+                <div class="bin-telemetry-row">
+                  <div class="iot-signal-box" id="iot-signal-1" title="IoT Signal: Excellent">
+                    <span class="signal-bar bar-1 active"></span>
+                    <span class="signal-bar bar-2 active"></span>
+                    <span class="signal-bar bar-3 active"></span>
+                    <span class="signal-bar bar-4 active"></span>
+                    <span class="signal-label" id="signal-label-1">Excellent</span>
+                  </div>
+                  <span class="temp-sensor" id="bin-temp-1">🌡️ 24°C</span>
+                  <button class="dispatch-btn" onclick="dispatchVehicle('Bin #01', 1)">Dispatch Truck</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bin 2: Yellow -->
+            <div class="bin-card glass-inset" id="bin-card-2" data-bin-id="2" data-fill-state="half">
+              <div class="bin-visual-col">
+                <div class="bin-3d-tank">
+                  <div class="bin-fill-liquid bg-bin-yellow" id="bin-fill-2" style="height: 62%;">
+                    <div class="wave-overlay"></div>
+                  </div>
+                  <div class="bin-capacity-mark"></div>
+                </div>
+              </div>
+              <div class="bin-info-col">
+                <div class="bin-top-row">
+                  <span class="bin-tag bg-bin-yellow-pill">Plastic & Packaging</span>
+                  <span class="bin-id">Bin #02 (Tech Plaza)</span>
+                </div>
+                <div class="bin-stat-row">
+                  <span class="bin-fill-percent" id="bin-percent-2">62%</span>
+                  <span class="status-badge badge-yellow" id="bin-status-2">
+                    <span class="dot"></span> Half Full
+                  </span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-yellow" id="bin-bar-2" style="width: 62%;"></div>
+                </div>
+
+                <!-- IoT Signal Strength Indicator -->
+                <div class="bin-telemetry-row">
+                  <div class="iot-signal-box" id="iot-signal-2" title="IoT Signal: Good">
+                    <span class="signal-bar bar-1 active"></span>
+                    <span class="signal-bar bar-2 active"></span>
+                    <span class="signal-bar bar-3 active"></span>
+                    <span class="signal-bar bar-4"></span>
+                    <span class="signal-label" id="signal-label-2">Good</span>
+                  </div>
+                  <span class="temp-sensor" id="bin-temp-2">🌡️ 26°C</span>
+                  <button class="dispatch-btn" onclick="dispatchVehicle('Bin #02', 2)">Dispatch Truck</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bin 3: Blue -->
+            <div class="bin-card glass-inset" id="bin-card-3" data-bin-id="3" data-fill-state="full">
+              <div class="bin-visual-col">
+                <div class="bin-3d-tank">
+                  <div class="bin-fill-liquid bg-bin-blue" id="bin-fill-3" style="height: 88%;">
+                    <div class="wave-overlay"></div>
+                  </div>
+                  <div class="bin-capacity-mark"></div>
+                </div>
+              </div>
+              <div class="bin-info-col">
+                <div class="bin-top-row">
+                  <span class="bin-tag bg-bin-blue-pill">Paper & Cardboard</span>
+                  <span class="bin-id">Bin #03 (Metro Station)</span>
+                </div>
+                <div class="bin-stat-row">
+                  <span class="bin-fill-percent" id="bin-percent-3">88%</span>
+                  <span class="status-badge badge-orange" id="bin-status-3">
+                    <span class="dot"></span> Full
+                  </span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-blue" id="bin-bar-3" style="width: 88%;"></div>
+                </div>
+
+                <!-- IoT Signal Strength Indicator -->
+                <div class="bin-telemetry-row">
+                  <div class="iot-signal-box" id="iot-signal-3" title="IoT Signal: Weak">
+                    <span class="signal-bar bar-1 active"></span>
+                    <span class="signal-bar bar-2 active"></span>
+                    <span class="signal-bar bar-3"></span>
+                    <span class="signal-bar bar-4"></span>
+                    <span class="signal-label" id="signal-label-3">Weak</span>
+                  </div>
+                  <span class="temp-sensor" id="bin-temp-3">🌡️ 22°C</span>
+                  <button class="dispatch-btn alert-pulse-btn" onclick="dispatchVehicle('Bin #03', 3)">Dispatch
+                    Truck</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bin 4: Red -->
+            <div class="bin-card glass-inset" id="bin-card-4" data-bin-id="4" data-fill-state="full">
+              <div class="bin-visual-col">
+                <div class="bin-3d-tank">
+                  <div class="bin-fill-liquid bg-bin-red" id="bin-fill-4" style="height: 94%;">
+                    <div class="wave-overlay"></div>
+                  </div>
+                  <div class="bin-capacity-mark"></div>
+                </div>
+              </div>
+              <div class="bin-info-col">
+                <div class="bin-top-row">
+                  <span class="bin-tag bg-bin-red-pill">E-Waste & Hazardous</span>
+                  <span class="bin-id">Bin #04 (Industrial Hub)</span>
+                </div>
+                <div class="bin-stat-row">
+                  <span class="bin-fill-percent" id="bin-percent-4">94%</span>
+                  <span class="status-badge badge-red pulse-badge" id="bin-status-4">
+                    <span class="dot"></span> CRITICAL
+                  </span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-red" id="bin-bar-4" style="width: 94%;"></div>
+                </div>
+
+                <!-- IoT Signal Strength Indicator -->
+                <div class="bin-telemetry-row">
+                  <div class="iot-signal-box" id="iot-signal-4" title="IoT Signal: Excellent">
+                    <span class="signal-bar bar-1 active"></span>
+                    <span class="signal-bar bar-2 active"></span>
+                    <span class="signal-bar bar-3 active"></span>
+                    <span class="signal-bar bar-4 active"></span>
+                    <span class="signal-label" id="signal-label-4">Excellent</span>
+                  </div>
+                  <span class="temp-sensor" id="bin-temp-4">🌡️ 31°C ⚠️</span>
+                  <button class="dispatch-btn urgent-btn" onclick="dispatchVehicle('Bin #04', 4)">Emergency
+                    Dispatch</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: Collection Fleet Status & Weekly Bar Chart -->
+        <div class="grid-card glass-card fleet-chart-panel">
+          <div class="fleet-status-grid">
+            <div class="fleet-mini-card glass-inset">
+              <span class="fleet-icon">⏳</span>
+              <div class="fleet-meta">
+                <h4 id="pending-pickups-count">3</h4>
+                <p>Pending Pickups</p>
+              </div>
+            </div>
+            <div class="fleet-mini-card glass-inset">
+              <span class="fleet-icon">✅</span>
+              <div class="fleet-meta">
+                <h4 id="completed-today-count">18</h4>
+                <p>Completed Today</p>
+              </div>
+            </div>
+            <div class="fleet-mini-card glass-inset">
+              <span class="fleet-icon">🚛</span>
+              <div class="fleet-meta">
+                <h4 id="active-vehicles-count">5</h4>
+                <p>Active Vehicles</p>
+              </div>
+            </div>
+            <div class="fleet-mini-card glass-inset">
+              <span class="fleet-icon">🚨</span>
+              <div class="fleet-meta">
+                <h4 id="alerts-count" class="text-danger">2</h4>
+                <p>Critical Alerts</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canvas Bar Chart -->
+          <div class="chart-container-box">
+            <div class="card-header chart-header">
+              <div class="header-title-box">
+                <span class="icon-bubble">📊</span>
+                <div>
+                  <h3>Waste Collection Status</h3>
+                  <p class="subtitle">Weekly tonnage collected (Mon - Sun)</p>
+                </div>
+              </div>
+              <div class="chart-toggle-group">
+                <button class="chart-tab active" data-view="total">Total</button>
+                <button class="chart-tab" data-view="recycled">Recycled</button>
+              </div>
+            </div>
+
+            <div class="canvas-wrapper">
+              <canvas id="weekly-bar-chart" width="540" height="220"></canvas>
+              <div id="chart-tooltip" class="custom-tooltip hidden"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: Recycling Analytics, Weekly Summary & Eco Score Card -->
+    <section id="section-2" class="dashboard-section">
+      <div class="section-title-bar">
+        <h2>📊 Analytics & Eco Performance</h2>
+        <p>Recycling metrics, weekly stats breakdown, and municipal sustainability score</p>
+      </div>
+
+      <div class="section-2-grid">
+
+        <!-- Column 1: Recycling Breakdown & Circular Gauge -->
+        <div class="grid-card glass-card recycling-analytics-panel">
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="icon-bubble">♻️</span>
+              <div>
+                <h3>Recycling Statistics</h3>
+                <p class="subtitle">Material breakdown & efficiency goal</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="donut-section">
+            <div class="donut-canvas-container">
+              <canvas id="donut-chart" width="200" height="200"></canvas>
+              <div class="donut-center-info">
+                <span class="donut-total-num">14.2</span>
+                <span class="donut-total-unit">Tons Today</span>
+              </div>
+            </div>
+
+            <div class="donut-legend">
+              <div class="legend-item"><span class="legend-dot bg-plastic"></span><span
+                  class="legend-name">Plastic</span><span class="legend-val">32%</span></div>
+              <div class="legend-item"><span class="legend-dot bg-paper"></span><span
+                  class="legend-name">Paper</span><span class="legend-val">28%</span></div>
+              <div class="legend-item"><span class="legend-dot bg-organic"></span><span
+                  class="legend-name">Organic</span><span class="legend-val">25%</span></div>
+              <div class="legend-item"><span class="legend-dot bg-metal"></span><span
+                  class="legend-name">Metal</span><span class="legend-val">15%</span></div>
+            </div>
+          </div>
+
+          <div class="gauge-section glass-inset">
+            <div class="gauge-meta">
+              <h4>Recycling Target Progress</h4>
+              <p>Target: 90.0% diversion rate</p>
+            </div>
+            <div class="gauge-canvas-wrapper">
+              <canvas id="circular-gauge" width="110" height="110"></canvas>
+              <div class="gauge-center-text"><span id="gauge-percent-text">88.5%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: 📅 Weekly Collection Summary -->
+        <div class="grid-card glass-card weekly-summary-panel">
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="icon-bubble">📅</span>
+              <div>
+                <h3>Weekly Collection Summary</h3>
+                <p class="subtitle">7-day performance breakdown</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-stats-cards">
+            <div class="summary-stat-item glass-inset">
+              <span class="stat-icon">📦</span>
+              <div class="stat-info">
+                <span class="stat-label">Total Waste Collected</span>
+                <h3 id="weekly-total-val">112.6 <span class="unit">Tons</span></h3>
+              </div>
+            </div>
+            <div class="summary-stat-item glass-inset">
+              <span class="stat-icon">📈</span>
+              <div class="stat-info">
+                <span class="stat-label">Daily Average</span>
+                <h3 id="weekly-avg-val">16.1 <span class="unit">Tons / day</span></h3>
+              </div>
+            </div>
+            <div class="summary-stat-item glass-inset">
+              <span class="stat-icon">🏆</span>
+              <div class="stat-info">
+                <span class="stat-label">Highest Collection Day</span>
+                <h3 id="peak-day-val">Friday <span class="peak-badge">(21.0 T)</span></h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Breakdown Bars -->
+          <div class="daily-progress-list">
+            <div class="daily-item">
+              <span class="day-name">Mon</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 59%;"></div>
+              </div>
+              <span class="day-val">12.4 T</span>
+            </div>
+            <div class="daily-item">
+              <span class="day-name">Tue</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 72%;"></div>
+              </div>
+              <span class="day-val">15.2 T</span>
+            </div>
+            <div class="daily-item">
+              <span class="day-name">Wed</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 56%;"></div>
+              </div>
+              <span class="day-val">11.8 T</span>
+            </div>
+            <div class="daily-item">
+              <span class="day-name">Thu</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 88%;"></div>
+              </div>
+              <span class="day-val">18.5 T</span>
+            </div>
+            <div class="daily-item peak-item">
+              <span class="day-name">Fri ⭐</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill bg-peak" style="width: 100%;"></div>
+              </div>
+              <span class="day-val">21.0 T</span>
+            </div>
+            <div class="daily-item">
+              <span class="day-name">Sat</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 91%;"></div>
+              </div>
+              <span class="day-val">19.3 T</span>
+            </div>
+            <div class="daily-item">
+              <span class="day-name">Sun</span>
+              <div class="day-bar-track">
+                <div class="day-bar-fill" style="width: 67%;"></div>
+              </div>
+              <span class="day-val">14.2 T</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: 🏅 Eco Score Card -->
+        <div class="grid-card glass-card eco-score-panel">
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="icon-bubble">🏅</span>
+              <div>
+                <h3>Eco Performance Card</h3>
+                <p class="subtitle">Municipal sustainability index</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Badge Display -->
+          <div class="eco-badge-hero glass-inset">
+            <div class="badge-icon-ring platinum-glow">
+              <span>💎</span>
+            </div>
+            <div class="badge-text-box">
+              <span class="tier-label">CURRENT TIER</span>
+              <h3 class="tier-title">Platinum Certified</h3>
+              <p class="tier-sub">Top 5% Eco City Rank</p>
+            </div>
+          </div>
+
+          <!-- Eco Score Number Ring -->
+          <div class="eco-score-metric">
+            <div class="score-number-box">
+              <h2 id="eco-score-num">94</h2>
+              <span class="score-max">/ 100</span>
+            </div>
+            <span class="score-tag">+6 pts this month</span>
+          </div>
+
+          <!-- Key Sustainability Indicators -->
+          <div class="eco-indicators-grid">
+            <div class="eco-ind-card glass-inset">
+              <span class="ind-icon">🌱</span>
+              <div class="ind-meta">
+                <h4 id="co2-saved-val">14.8 T</h4>
+                <p>CO₂ Emissions Saved</p>
+              </div>
+            </div>
+            <div class="eco-ind-card glass-inset">
+              <span class="ind-icon">🌳</span>
+              <div class="ind-meta">
+                <h4 id="trees-saved-val">342</h4>
+                <p>Trees Equivalent</p>
+              </div>
+            </div>
+            <div class="eco-ind-card glass-inset">
+              <span class="ind-icon">♻️</span>
+              <div class="ind-meta">
+                <h4 id="recycling-rate-val">88.5%</h4>
+                <p>Recycling Rate</p>
+              </div>
+            </div>
+            <div class="eco-ind-card glass-inset">
+              <span class="ind-icon">⚡</span>
+              <div class="ind-meta">
+                <h4>99.2%</h4>
+                <p>Sensor Uptime</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: Interactive City Map Mockup, Activity Stream & System Health -->
+    <section id="section-3" class="dashboard-section">
+      <div class="section-title-bar">
+        <h2>🗺️ City Operations & IoT Fleet Network</h2>
+        <p>Interactive bin location map, IoT system diagnostics, and real-time live event log</p>
+      </div>
+
+      <div class="section-3-grid">
+
+        <!-- LEFT: 🗺️ Interactive City Map (Frontend Mockup) -->
+        <div class="grid-card glass-card city-map-panel">
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="icon-bubble">🗺️</span>
+              <div>
+                <h3>Smart City Bin Location Map</h3>
+                <p class="subtitle">Interactive IoT bin markers & status</p>
+              </div>
+            </div>
+            <div class="map-legend">
+              <span class="map-legend-item"><span class="marker-dot bg-green"></span> Empty</span>
+              <span class="map-legend-item"><span class="marker-dot bg-yellow"></span> Half Full</span>
+              <span class="map-legend-item"><span class="marker-dot bg-red"></span> Full / Critical</span>
+            </div>
+          </div>
+
+          <!-- Map Mockup Canvas/SVG Grid -->
+          <div class="map-mockup-wrapper" id="city-map-container">
+            <!-- Vector City Map Background Elements -->
+            <div class="map-vector-grid">
+              <div class="road road-h-1"></div>
+              <div class="road road-h-2"></div>
+              <div class="road road-v-1"></div>
+              <div class="road road-v-2"></div>
+              <div class="city-park"><span>🌲 Central Park Zone</span></div>
+              <div class="city-river"><span>🌊 River Bend</span></div>
+              <div class="city-district dist-1">Tech District</div>
+              <div class="city-district dist-2">Commercial Hub</div>
+            </div>
+
+            <!-- Clickable Live Bin Location Pins (Rendered dynamically via JS) -->
+            <div id="map-pins-layer" class="map-pins-layer"></div>
+
+            <!-- Bin Details Popover Modal Card -->
+            <div id="map-popover" class="map-popover glass-card hidden">
+              <button id="close-popover-btn" class="popover-close">&times;</button>
+              <div class="popover-header">
+                <span class="popover-tag" id="popover-tag">Bio Waste</span>
+                <h4 id="popover-title">Bin #01 (Central Market)</h4>
+              </div>
+              <div class="popover-body">
+                <div class="popover-stat"><span>Fill Level:</span> <strong id="popover-fill">35%</strong></div>
+                <div class="popover-stat"><span>IoT Signal:</span> <strong id="popover-signal">Excellent</strong></div>
+                <div class="popover-stat"><span>Temperature:</span> <strong id="popover-temp">24°C</strong></div>
+                <div class="popover-stat"><span>Status:</span> <strong id="popover-status">Normal</strong></div>
+              </div>
+              <button class="dispatch-btn popover-action-btn" id="popover-dispatch-btn">Dispatch Truck Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: System Health & Live Activities -->
+        <div class="right-stack-col">
+
+          <!-- 📶 System Health Monitor -->
+          <div class="grid-card glass-card system-health-panel">
+            <div class="card-header">
+              <div class="header-title-box">
+                <span class="icon-bubble">📡</span>
+                <div>
+                  <h3>System Health & IoT Mesh</h3>
+                  <p class="subtitle">Gateway status & battery health</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="health-metrics-list">
+              <div class="health-item glass-inset">
+                <div class="health-label-row">
+                  <span>LoRaWAN Gateways</span>
+                  <span class="text-emerald">Online (6/6)</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-green" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="health-item glass-inset">
+                <div class="health-label-row">
+                  <span>Average Sensor Battery</span>
+                  <span class="text-cyan">94% Capacity</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-blue" style="width: 94%;"></div>
+                </div>
+              </div>
+              <div class="health-item glass-inset">
+                <div class="health-label-row">
+                  <span>Vehicle Fleet GPS Mesh</span>
+                  <span class="text-emerald">Active (5 Vehicles)</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill bg-bin-green" style="width: 98%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Activity Stream -->
+          <div class="grid-card glass-card activity-panel">
+            <div class="footer-title-row">
+              <div class="live-activity-label">
+                <span class="pulse-dot"></span>
+                <h4>Live Activity Stream</h4>
+              </div>
+              <div class="activity-filters">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="bins">Bins</button>
+                <button class="filter-pill" data-filter="fleet">Fleet</button>
+                <button class="filter-pill" data-filter="alerts">Alerts</button>
+              </div>
+            </div>
+
+            <div class="activity-log-wrapper">
+              <ul id="activity-log-list" class="activity-log-list"></ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer glass-card">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-logo-sm">🌱</span>
+          <p>© 2026 EcoBin Smart City Municipal Corporation. All IoT systems operational.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
