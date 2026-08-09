@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ColorCraft - Premium modern color palette generator. Create, lock, customize, and export stunning color schemes instantly.">
+  <meta name="theme-color" content="#0f172a">
+  <title>ColorCraft — Premium Color Palette Generator</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Orbs for Glassmorphism Background -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Main App Layout -->
+  <div class="app-wrapper">
+    
+    <!-- 1. Header Navigation -->
+    <header class="app-header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C13.88 22 15.38 20.5 15.38 18.62C15.38 17.76 15.03 16.98 14.47 16.41C13.91 15.85 13.56 15.07 13.56 14.21C13.56 12.44 15 11 16.77 11H19C20.66 11 22 9.66 22 8C22 4.69 17.52 2 12 2ZM6.5 11.5C5.67 11.5 5 10.83 5 10C5 9.17 5.67 8.5 6.5 8.5C7.33 8.5 8 9.17 8 10C8 10.83 7.33 11.5 6.5 11.5ZM9.5 7.5C8.67 7.5 8 6.83 8 6C8 5.17 8.67 4.5 9.5 4.5C10.33 4.5 11 5.17 11 6C11 6.83 10.33 7.5 9.5 7.5ZM14.5 7.5C13.67 7.5 13 6.83 13 6C13 5.17 13.67 4.5 14.5 4.5C15.33 4.5 16 5.17 16 6C16 6.83 15.33 7.5 14.5 7.5ZM17.5 11.5C16.67 11.5 16 10.83 16 10C16 9.17 16.67 8.5 17.5 8.5C18.33 8.5 19 9.17 19 10C19 10.83 18.33 11.5 17.5 11.5Z" fill="url(#logo-gradient)"/>
+            <defs>
+              <linearGradient id="logo-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366F1"/>
+                <stop offset="0.5" stop-color="#A855F7"/>
+                <stop offset="1" stop-color="#EC4899"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">ColorCraft</span>
+          <span class="brand-badge">PRO</span>
+        </div>
+      </div>
+
+      <div class="header-subtitle">Generate beautiful color palettes instantly</div>
+
+      <div class="header-actions">
+        <button id="shortcuts-btn" class="icon-btn" title="Keyboard Shortcuts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M8 16h8"/></svg>
+          <span class="btn-text-desktop">Shortcuts</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="hero-section">
+      <h1 class="hero-title">Create Your Perfect Color Palette</h1>
+      <p class="hero-description">Generate beautiful, balanced color combinations with one click.</p>
+      
+      <div class="hero-action-bar">
+        <button id="generate-btn" class="btn btn-primary btn-hero">
+          <svg class="btn-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+          <span>Generate Palette</span>
+        </button>
+
+        <div class="keyboard-hint" title="Press Spacebar anywhere to generate new palette">
+          <kbd>Space</kbd>
+          <span>to generate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Main Controls & Palette Style -->
+    <section class="controls-section glass-panel">
+      <div class="harmony-control-group">
+        <label for="harmony-select" class="control-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20z"/></svg>
+          <span>Palette Style:</span>
+        </label>
+        <div class="select-wrapper">
+          <select id="harmony-select" class="custom-select">
+            <option value="random">🎲 Random (Cohesive)</option>
+            <option value="analogous">🌈 Analogous</option>
+            <option value="monochromatic">🌓 Monochromatic</option>
+            <option value="complementary">☯️ Complementary</option>
+            <option value="triadic">🔺 Triadic</option>
+            <option value="split-complementary">📐 Split-Complementary</option>
+            <option value="pastels">🌸 Soft Pastels</option>
+            <option value="vibrant">⚡ Vibrant & Bold</option>
+            <option value="dark">🌙 Dark & Moody</option>
+            <option value="neon">✨ Neon Cyber</option>
+          </select>
+          <svg class="select-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="global-actions-group">
+        <button id="undo-btn" class="btn btn-secondary btn-icon-only" title="Undo Palette Change (Ctrl+Z)" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+        </button>
+        <button id="redo-btn" class="btn btn-secondary btn-icon-only" title="Redo Palette Change (Ctrl+Y)" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/></svg>
+        </button>
+        <div class="action-divider"></div>
+        <button id="copy-all-btn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Copy All</span>
+        </button>
+        <button id="save-palette-btn" class="btn btn-secondary">
+          <svg class="heart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>Save Palette</span>
+        </button>
+        <button id="export-palette-btn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Export</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. Main 5-Card Palette Container -->
+    <main id="palette-container" class="palette-container">
+      <!-- 5 Color Cards dynamically rendered / updated via JS -->
+      <div class="color-card" data-index="0">
+        <div class="card-top-bar">
+          <span class="contrast-badge" title="WCAG Luminance Contrast Index">AA</span>
+          <button class="card-lock-btn icon-btn-round" data-index="0" aria-label="Lock color" title="Lock color (Key 1)">
+            <svg class="lock-icon unlock-state" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <svg class="lock-icon lock-state hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </button>
+        </div>
+
+        <div class="color-preview-click-area" data-index="0" title="Click HEX or Copy button to copy code"></div>
+
+        <div class="card-details-panel">
+          <div class="color-name" data-index="0">Royal Blue</div>
+          <button class="hex-code-btn" data-index="0" title="Click to copy HEX">#6C63FF</button>
+          <div class="rgb-value" data-index="0">RGB(108, 99, 255)</div>
+
+          <div class="card-actions-row">
+            <button class="card-action-btn copy-card-btn" data-index="0" title="Copy HEX Code">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+            <button class="card-action-btn shade-card-btn" data-index="0" title="View Shades & Tints">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>Shades</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card" data-index="1">
+        <div class="card-top-bar">
+          <span class="contrast-badge">AA</span>
+          <button class="card-lock-btn icon-btn-round" data-index="1" aria-label="Lock color" title="Lock color (Key 2)">
+            <svg class="lock-icon unlock-state" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <svg class="lock-icon lock-state hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </button>
+        </div>
+        <div class="color-preview-click-area" data-index="1"></div>
+        <div class="card-details-panel">
+          <div class="color-name" data-index="1">Coral Pink</div>
+          <button class="hex-code-btn" data-index="1">#FF6584</button>
+          <div class="rgb-value" data-index="1">RGB(255, 101, 132)</div>
+          <div class="card-actions-row">
+            <button class="card-action-btn copy-card-btn" data-index="1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+            <button class="card-action-btn shade-card-btn" data-index="1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Shades</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card" data-index="2">
+        <div class="card-top-bar">
+          <span class="contrast-badge">AAA</span>
+          <button class="card-lock-btn icon-btn-round" data-index="2" aria-label="Lock color" title="Lock color (Key 3)">
+            <svg class="lock-icon unlock-state" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <svg class="lock-icon lock-state hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </button>
+        </div>
+        <div class="color-preview-click-area" data-index="2"></div>
+        <div class="card-details-panel">
+          <div class="color-name" data-index="2">Teal Turquoise</div>
+          <button class="hex-code-btn" data-index="2">#42E2B8</button>
+          <div class="rgb-value" data-index="2">RGB(66, 226, 184)</div>
+          <div class="card-actions-row">
+            <button class="card-action-btn copy-card-btn" data-index="2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+            <button class="card-action-btn shade-card-btn" data-index="2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Shades</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card" data-index="3">
+        <div class="card-top-bar">
+          <span class="contrast-badge">AA</span>
+          <button class="card-lock-btn icon-btn-round" data-index="3" aria-label="Lock color" title="Lock color (Key 4)">
+            <svg class="lock-icon unlock-state" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <svg class="lock-icon lock-state hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </button>
+        </div>
+        <div class="color-preview-click-area" data-index="3"></div>
+        <div class="card-details-panel">
+          <div class="color-name" data-index="3">Warm Amber</div>
+          <button class="hex-code-btn" data-index="3">#FFD166</button>
+          <div class="rgb-value" data-index="3">RGB(255, 209, 102)</div>
+          <div class="card-actions-row">
+            <button class="card-action-btn copy-card-btn" data-index="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+            <button class="card-action-btn shade-card-btn" data-index="3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Shades</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card" data-index="4">
+        <div class="card-top-bar">
+          <span class="contrast-badge">AAA</span>
+          <button class="card-lock-btn icon-btn-round" data-index="4" aria-label="Lock color" title="Lock color (Key 5)">
+            <svg class="lock-icon unlock-state" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <svg class="lock-icon lock-state hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </button>
+        </div>
+        <div class="color-preview-click-area" data-index="4"></div>
+        <div class="card-details-panel">
+          <div class="color-name" data-index="4">Midnight Slate</div>
+          <button class="hex-code-btn" data-index="4">#121826</button>
+          <div class="rgb-value" data-index="4">RGB(18, 24, 38)</div>
+          <div class="card-actions-row">
+            <button class="card-action-btn copy-card-btn" data-index="4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+            <button class="card-action-btn shade-card-btn" data-index="4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Shades</span></button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 5. Saved Palettes Section -->
+    <section class="saved-palettes-section glass-panel">
+      <div class="section-header">
+        <div class="title-with-badge">
+          <h2>❤️ Saved Palettes</h2>
+          <span id="saved-count-badge" class="count-pill">0</span>
+        </div>
+        <button id="clear-all-saved-btn" class="btn-text-danger hidden" title="Clear all saved palettes">Clear All</button>
+      </div>
+
+      <div id="saved-palettes-container" class="saved-palettes-grid">
+        <!-- Empty state placeholder -->
+        <div id="saved-empty-state" class="empty-state">
+          <div class="empty-icon">🎨</div>
+          <h3>No saved palettes yet</h3>
+          <p>Click "❤️ Save Palette" above to store your favorite color combinations here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>ColorCraft — Designed & Built with Vanilla HTML, CSS & JavaScript</p>
+    </footer>
+
+  </div>
+
+  <!-- MODAL 1: Export Palette Modal -->
+  <div id="export-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-window glass-panel-modal">
+      <div class="modal-header">
+        <h3>↓ Export Palette</h3>
+        <button class="modal-close-btn" data-close="export-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="export-tabs">
+          <button class="export-tab active" data-format="txt">Plain Text (.txt)</button>
+          <button class="export-tab" data-format="css">CSS Variables</button>
+          <button class="export-tab" data-format="json">JSON Array</button>
+        </div>
+        <div class="export-preview-box">
+          <pre id="export-code-preview"><code>#6C63FF
+#FF6584
+#42E2B8
+#FFD166
+#121826</code></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="copy-export-code-btn" class="btn btn-secondary">Copy Snippet</button>
+        <button id="download-file-btn" class="btn btn-primary">Download File</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Shades & Tints Inspector Modal -->
+  <div id="shade-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-window glass-panel-modal modal-large">
+      <div class="modal-header">
+        <div class="shade-title-wrap">
+          <div id="shade-color-swatch-badge" class="swatch-badge"></div>
+          <h3 id="shade-modal-title">Shades & Tints</h3>
+        </div>
+        <button class="modal-close-btn" data-close="shade-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">Click any tint or shade below to copy its HEX value to clipboard.</p>
+        <div id="shades-grid" class="shades-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Keyboard Shortcuts Guide -->
+  <div id="shortcuts-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-window glass-panel-modal">
+      <div class="modal-header">
+        <h3>⌨️ Keyboard Shortcuts</h3>
+        <button class="modal-close-btn" data-close="shortcuts-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcuts-list">
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">Space</kbd>
+            <span class="shortcut-desc">Generate new color palette</span>
+          </div>
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">1</kbd> – <kbd class="shortcut-key">5</kbd>
+            <span class="shortcut-desc">Toggle lock on color card 1 to 5</span>
+          </div>
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">S</kbd>
+            <span class="shortcut-desc">Save current palette to favorites</span>
+          </div>
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">C</kbd>
+            <span class="shortcut-desc">Copy all HEX codes to clipboard</span>
+          </div>
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">Ctrl</kbd> + <kbd class="shortcut-key">Z</kbd>
+            <span class="shortcut-desc">Undo previous palette</span>
+          </div>
+          <div class="shortcut-row">
+            <kbd class="shortcut-key">Ctrl</kbd> + <kbd class="shortcut-key">Y</kbd>
+            <span class="shortcut-desc">Redo next palette</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Module -->
+  <script src="script.js"></script>
+</body>
+</html>
