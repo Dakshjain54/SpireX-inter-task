@@ -1,14 +1,5 @@
-/**
- * ColorCraft — Premium Color Palette Generator Script
- * Clean Vanilla JavaScript Module
- */
-
 (function () {
   'use strict';
-
-  /* ==========================================================================
-     1. Color Name Dictionary (~150 Named Colors for Accurate Lookup)
-     ========================================================================== */
   const COLOR_NAMES = [
     { hex: '#000000', name: 'Absolute Black' },
     { hex: '#ffffff', name: 'Pure White' },
@@ -114,10 +105,7 @@
     { hex: '#9e9e9e', name: 'Neutral Gray' },
     { hex: '#607d8b', name: 'Blue Slate' }
   ];
-
-  /* ==========================================================================
-     2. Application State Definition
-     ========================================================================== */
+// Application State Definition
   const state = {
     cards: [
       { hex: '#6C63FF', rgb: [108, 99, 255], hsl: [244, 100, 69], locked: false, name: 'Royal Blue' },
@@ -135,10 +123,7 @@
   };
 
   const STORAGE_KEY = 'colorcraft_saved_palettes_v1';
-
-  /* ==========================================================================
-     3. Utility Functions (Color Math & Converters)
-     ========================================================================== */
+// Utility Functions (Color Math & Converters)
   function hexToRgb(hex) {
     let cleanHex = hex.replace('#', '');
     if (cleanHex.length === 3) {
@@ -251,10 +236,7 @@
     }
     return closestName;
   }
-
-  /* ==========================================================================
-     4. Palette Generation Engine & Color Theory Harmonies
-     ========================================================================== */
+// Palette Generation Engine & Color Theory Harmonies
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -378,10 +360,7 @@
       };
     });
   }
-
-  /* ==========================================================================
-     5. DOM Render & Interaction Controller
-     ========================================================================== */
+// DOM Render & Interaction Controller
   const elements = {
     generateBtn: document.getElementById('generate-btn'),
     harmonySelect: document.getElementById('harmony-select'),
@@ -504,10 +483,7 @@
       showToast(`Color ${index + 1} (${state.cards[index].hex}) ${statusText}`);
     }
   }
-
-  /* ==========================================================================
-     6. Copy to Clipboard & Toast System
-     ========================================================================== */
+// Copy to Clipboard & Toast System
   function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -560,10 +536,7 @@
     const hexList = state.cards.map(c => c.hex).join('\n');
     copyToClipboard(hexList, '✓ All 5 HEX colors copied to clipboard!');
   }
-
-  /* ==========================================================================
-     7. Saved Palettes Persistence (LocalStorage)
-     ========================================================================== */
+// Saved Palettes Persistence (LocalStorage)
   function loadSavedPalettes() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -703,10 +676,7 @@
       elements.savedContainer.appendChild(card);
     });
   }
-
-  /* ==========================================================================
-     8. Export Engine (.txt, .css, .json file download)
-     ========================================================================== */
+// Export Engine (.txt, .css, .json file download)
   function openExportModal() {
     updateExportPreview();
     elements.exportModal.classList.remove('hidden');
@@ -756,10 +726,7 @@
     URL.revokeObjectURL(url);
     showToast(`✓ Downloaded colorcraft-palette.${ext}`);
   }
-
-  /* ==========================================================================
-     9. Shades & Tints Generator Modal
-     ========================================================================== */
+// Shades & Tints Generator Modal
   function openShadesModal(cardIndex) {
     state.selectedShadeCardIndex = cardIndex;
     const cardData = state.cards[cardIndex];
@@ -792,10 +759,7 @@
 
     elements.shadeModal.classList.remove('hidden');
   }
-
-  /* ==========================================================================
-     10. Undo / Redo Navigation
-     ========================================================================== */
+// Undo / Redo Navigation
   function undoPalette() {
     if (state.historyIndex > 0) {
       state.historyIndex--;
@@ -826,10 +790,7 @@
       showToast('↪️ Palette change redone');
     }
   }
-
-  /* ==========================================================================
-     11. Event Listeners Initialization
-     ========================================================================== */
+// Event Listeners Initialization
   function initEventListeners() {
     // Generate Palette CTA
     elements.generateBtn.addEventListener('click', () => generatePalette());
@@ -976,10 +937,7 @@
       }
     });
   }
-
-  /* ==========================================================================
-     12. Bootstrapping App
-     ========================================================================== */
+// Bootstrapping App
   function init() {
     // Initial palette setup & history
     pushHistory();
