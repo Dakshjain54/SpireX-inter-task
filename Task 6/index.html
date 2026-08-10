@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, premium BMI Calculator to quickly check your Body Mass Index with accurate calculations and clean visual indicators.">
+  <title>BMI Calculator - Check Your Body Mass Index</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <main class="app-container">
+    <div class="bmi-card">
+      <!-- Header -->
+      <header class="card-header">
+        <h1 class="card-title">BMI Calculator</h1>
+        <p class="card-subtitle">Check your Body Mass Index</p>
+      </header>
+
+      <!-- Calculator Form -->
+      <form id="bmiForm" class="bmi-form" autocomplete="off" novalidate>
+        <!-- Height Input -->
+        <div class="input-group">
+          <label for="height" class="input-label">Height</label>
+          <div class="input-wrapper">
+            <input 
+              type="number" 
+              id="height" 
+              placeholder="Enter height" 
+              min="1" 
+              max="300" 
+              step="any" 
+              required
+            >
+            <span class="unit-badge">cm</span>
+          </div>
+        </div>
+
+        <!-- Weight Input -->
+        <div class="input-group">
+          <label for="weight" class="input-label">Weight</label>
+          <div class="input-wrapper">
+            <input 
+              type="number" 
+              id="weight" 
+              placeholder="Enter weight" 
+              min="1" 
+              max="500" 
+              step="any" 
+              required
+            >
+            <span class="unit-badge">kg</span>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden" role="alert">
+          Please enter valid height and weight.
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="calculateBtn" class="btn-calculate">
+          Calculate BMI
+        </button>
+      </form>
+
+      <!-- Result Card -->
+      <div id="resultBox" class="result-box hidden">
+        <span class="result-header">Your BMI</span>
+        <div id="bmiValue" class="bmi-value">22.4</div>
+        <div id="bmiCategory" class="bmi-category category-normal">Normal Weight</div>
+        <p id="bmiMessage" class="bmi-message">Your BMI is within the normal range.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
