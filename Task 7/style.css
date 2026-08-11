@@ -1,11 +1,3 @@
-/* ==========================================================================
-   Task 7: Premium 3D Circular Image Gallery — Stylesheet
-   Spacious Multi-Section Layout with Glassmorphism & Smooth Scrolling
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. CSS Custom Properties
-   -------------------------------------------------------------------------- */
 :root {
   --bg-dark: #05070c;
   --bg-surface: #0a0e17;
@@ -48,10 +40,7 @@
     --radius-3d: 300px;
   }
 }
-
-/* --------------------------------------------------------------------------
-   2. Reset & Page Layout
-   -------------------------------------------------------------------------- */
+/* Reset & Page Layout */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -81,10 +70,7 @@ body {
   position: relative;
   z-index: 1;
 }
-
-/* --------------------------------------------------------------------------
-   3. Ambient Radial Glow Backgrounds
-   -------------------------------------------------------------------------- */
+/* Ambient Radial Glow Backgrounds */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
@@ -127,10 +113,7 @@ body {
   0% { transform: scale(1) translate(-50%, 0); opacity: 0.3; }
   100% { transform: scale(1.15) translate(-48%, 20px); opacity: 0.45; }
 }
-
-/* --------------------------------------------------------------------------
-   4. Hero Header Section
-   -------------------------------------------------------------------------- */
+/* Hero Header Section */
 .hero-section {
   text-align: center;
   padding: 4.5rem 1.5rem 2.5rem 1.5rem;
@@ -227,10 +210,7 @@ body {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(12px); opacity: 0; }
 }
-
-/* --------------------------------------------------------------------------
-   5. 3D Gallery Section
-   -------------------------------------------------------------------------- */
+/* 3D Gallery Section */
 .gallery-3d-section {
   position: relative;
   width: 100%;
@@ -264,10 +244,7 @@ body {
   will-change: transform;
   transition: transform 0.05s linear;
 }
-
-/* --------------------------------------------------------------------------
-   6. 3D Image Cards
-   -------------------------------------------------------------------------- */
+/* 3D Image Cards */
 .card-3d {
   position: absolute;
   inset: 0;
@@ -352,10 +329,7 @@ body {
   color: var(--text-muted);
   font-weight: 500;
 }
-
-/* --------------------------------------------------------------------------
-   7. Keyboard & Controls Single Line Glass Pill Bar
-   -------------------------------------------------------------------------- */
+Keyboard & Controls Single Line Glass Pill Bar
 .guide-section {
   padding: 2rem 1.5rem 5rem 1.5rem;
   display: flex;
