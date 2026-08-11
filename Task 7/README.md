@@ -1,63 +1,144 @@
-# 🌀 Task 7 — Premium 3D Circular Image Gallery
+# 🌀 3D Circular Image Gallery
 
-An interactive, full-screen **3D Circular Wildlife Photography Gallery** created exclusively using **HTML5, CSS3, and Vanilla JavaScript**. No React, Tailwind, Three.js, GSAP, or third-party libraries used.
+A premium and interactive **3D Circular Image Gallery** built using **HTML5, CSS3, and Vanilla JavaScript**.
 
----
-
-## ✨ Key Features
-
-- 🌀 **3D Cylindrical Geometry**: 10 high-resolution animal photography cards arranged in a 360-degree cylindrical orbit using CSS 3D transforms (`transform-style: preserve-3d`, `rotateY`, `translateZ`).
-- 🔄 **Dual Rotation Engine**:
-  - **Scroll / Wheel Rotation**: Mouse wheel and touch drag directly drive smooth gallery rotation angles.
-  - **Auto Rotation**: Continuous idle rotation loop (`requestAnimationFrame`) running at a smooth 60fps.
-  - **Smart Pause/Resume**: Auto-rotation pauses seamlessly during user scroll or drag and resumes automatically after 250ms of inactivity.
-- 🌌 **Depth & Lighting Attenuation**: Dynamic distance-based calculations darken, blur, and fade back-facing cards (`opacity: 0.3`, `brightness: 0.35`, `blur: 2.5px`) while emphasizing front-facing cards (`opacity: 1.0`, `brightness: 1.05`).
-- 🖱️ **Mouse Parallax Pitch Tilt**: Subtle mouse movements add 3D perspective pitch tilt (`rotateX`) to the gallery stage.
-- ⌨️ **Keyboard Controls**:
-  - `<Left Arrow>` / `<Right Arrow>`: Step-rotate one card position (36°).
-  - `<Space>`: Toggle manual auto-rotation Pause/Play state.
-- 📱 **Fluid Responsive Breakpoints**:
-  - **Desktop (≥1025px)**: Card 300×400px, 3D Radius 600px
-  - **Tablet (641px–1024px)**: Card 240×320px, 3D Radius 450px
-  - **Mobile (≤640px)**: Card 190×280px, 3D Radius 300px
+The project displays multiple animal images around an invisible 3D cylinder. Users can explore the gallery through smooth **scroll-based rotation** and **automatic 3D movement**.
 
 ---
 
-## 📁 Project Structure
+## 📸 Preview
+https://image-gallery06.netlify.app/
+
+---
+
+## ✨ Features
+
+* 🌀 3D circular image arrangement
+* 🔄 Smooth automatic gallery rotation
+* 🖱️ Scroll-based 3D rotation
+* 🎨 Premium dark UI
+* 🌐 CSS 3D transforms
+* 📸 Animal image gallery
+* ✨ Smooth card animations
+* 🌑 3D depth and opacity effects
+* 📱 Responsive design
+* ⌨️ Keyboard controls
+* 🖼️ Image information overlay
+* ⚡ Lightweight Vanilla JavaScript
+* ♿ Basic accessibility support
+
+---
+
+## 🎨 Design
+
+The project uses a premium visual style featuring:
+
+* Dark charcoal background
+* Radial gradients
+* Glassmorphism
+* Thin borders
+* Soft glow
+* Deep shadows
+* Rounded image cards
+* Large modern typography
+* Smooth transitions
+
+The design intentionally keeps the interface minimal so the **3D gallery remains the main focus**.
+
+---
+
+## 📱 Responsive Design
+
+The gallery adapts to different screen sizes.
+
+### Desktop
+
+```text
+Card: ~300 × 400px
+Radius: ~600px
+```
+
+### Tablet
+
+```text
+Card: ~240 × 320px
+Radius: ~450px
+```
+
+### Mobile
+
+```text
+Card: ~190 × 280px
+Radius: ~300px
+```
+
+The gallery remains centered and usable across devices.
+
+---
+
+## 🛠️ Technologies Used
+
+### HTML5
+
+Used for:
+
+* Page structure
+* Semantic elements
+* Image content
+* Accessibility attributes
+
+### CSS3
+
+Used for:
+
+* 3D transforms
+* Perspective
+* Glassmorphism
+* Gradients
+* Animations
+* Responsive design
+* Hover effects
+
+### Vanilla JavaScript
+
+Used for:
+
+* Creating gallery cards
+* Positioning images
+* Scroll interaction
+* Auto rotation
+* Depth calculation
+* Keyboard controls
+* Dynamic updates
+
+No external frameworks or animation libraries are used.
+
+---
+
+## 📂 Project Structure
 
 ```text
 image-gallery/
-├── index.html   # Full-screen 3D scene stage, header, and footer markup
-├── style.css    # 3D perspective, cylindrical transforms, dark glassmorphism styling
-├── script.js    # 3D math engine, Lerp rotation loop, depth lighting calculation, event handlers
-└── README.md    # Documentation & setup guide
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+
 ```
 
----
 
-## 🚀 How to Run
+## 🎯 Project Objective
 
-1. Open `index.html` directly in any web browser (Google Chrome, Firefox, Edge, Safari).
-2. Alternatively, serve via any static web server (e.g. `npx serve` or Python `python -m http.server 8080`).
+The objective of this project was to create an immersive and visually impressive **3D image gallery** using only core web technologies.
 
----
-
-## 🎨 3D Math Logic
-
-Each card is positioned around a 360° circular orbit:
-
-$$\text{Angle Step} = \frac{360^\circ}{\text{Total Cards}} = 36^\circ$$
-
-$$\text{Card Transform} = \text{rotateY}(\text{index} \times 36^\circ) \quad \text{translateZ}(R)$$
-
-Card distance normalized angle relative to the front viewer ($0^\circ$):
-
-$$\text{Normalized Angle} = \min(|\text{Angle}_{\text{rel}}|, 360^\circ - |\text{Angle}_{\text{rel}}|)$$
-
-$$\text{Opacity} = \max(0.3,\, 1 - \frac{\text{Normalized Angle}}{180^\circ} \times 0.7)$$
+It demonstrates how **HTML, CSS, and Vanilla JavaScript** can be combined to create interactive 3D experiences without relying on heavy frameworks or animation libraries.
 
 ---
 
-## 📜 License
+## 👨‍💻 Author
 
-Created for Internship Task 7. Open for educational and portfolio demonstration.
+**Daksh Jain**
+
+B.Tech CSE — AI/ML Student
+
