@@ -1,12 +1,3 @@
-/**
- * Task 7: Premium 3D Circular Image Gallery — Script
- * Feature Highlights: 3D Cylindrical Geometry, Scroll Progress Mapping,
- * Dual Rotation (Scroll + Auto), Mouse Parallax Tilt, and Depth Lighting Attenuation.
- */
-
-// ==========================================
-// 1. Gallery Data Collection (10 Wildlife Photography Items)
-// ==========================================
 const galleryData = [
   {
     name: "Lion",
@@ -79,10 +70,7 @@ const galleryData = [
     image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1000&q=80"
   }
 ];
-
-// ==========================================
-// 2. Application State Variables
-// ==========================================
+// Application State Variables
 let currentRotation = 0;
 let targetRotation = 0;
 let isAutoRotating = true;
@@ -103,10 +91,7 @@ let currentTiltX = 0;
 let radius = 600;
 const totalCards = galleryData.length;
 const angleStep = 360 / totalCards;
-
-// ==========================================
-// 3. DOM Elements
-// ==========================================
+// DOM Elements
 const galleryTrack = document.getElementById('galleryTrack');
 const scene3d = document.getElementById('scene3d');
 const statusDot = document.getElementById('statusDot');
@@ -114,10 +99,7 @@ const statusText = document.getElementById('statusText');
 
 // Array of created card DOM elements
 const cardElements = [];
-
-// ==========================================
-// 4. Initialization
-// ==========================================
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
   calculateRadius();
   createGallery();
@@ -179,10 +161,7 @@ function positionCards() {
     card.style.transform = `rotateY(${rotationDeg}deg) translateZ(${radius}px)`;
   });
 }
-
-// ==========================================
-// 5. Animation Loop & 3D Depth Calculation
-// ==========================================
+// Animation Loop & 3D Depth Calculation
 function animationLoop() {
   // 1. Auto rotation logic
   if (isAutoRotating && !isDragging) {
@@ -225,10 +204,7 @@ function updateDepth() {
     card.style.filter = `brightness(${brightness.toFixed(2)}) blur(${blur.toFixed(1)}px)`;
   });
 }
-
-// ==========================================
-// 6. Interaction Handlers (Scroll, Drag, Keyboard)
-// ==========================================
+// Interaction Handlers (Scroll, Drag, Keyboard)
 function setupEventListeners() {
   // 1. Page Scroll Progress Listener
   window.addEventListener('scroll', () => {
