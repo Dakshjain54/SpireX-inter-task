@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Gallery — Premium 3D Visual Experience</title>
+  <meta name="description" content="An interactive 3D circular rotating photography gallery showcasing wildlife with spacious sections and smooth scroll rotation.">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Effects -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-center"></div>
+  <div class="ambient-glow glow-bottom"></div>
+
+  <div class="page-wrapper">
+    
+    <!-- 1. Hero Header Section -->
+    <header class="hero-section">
+      <div class="hero-badge">
+        <span class="badge-dot" id="statusDot"></span>
+        <span id="statusText">Auto-rotating</span>
+      </div>
+      <h1 class="hero-title">Animal Gallery</h1>
+      <p class="hero-subtitle">A 3D Circular Journey Through Wildlife Photography</p>
+      <div class="scroll-indicator">
+        <span>Scroll to Rotate &amp; Explore</span>
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. 3D Gallery Section -->
+    <section class="gallery-3d-section" aria-label="3D Animal Gallery Carousel">
+      <div class="scene" id="scene3d">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- 3D Image cards injected dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Keyboard & Controls Guide Section -->
+    <section class="guide-section">
+      <div class="guide-card">
+        <h3>Interaction Guide</h3>
+        <div class="controls-list">
+          <div class="control-item">
+            <kbd>Scroll / Drag</kbd>
+            <span>Rotate 3D Cylinder</span>
+          </div>
+          <div class="control-item">
+            <kbd>←</kbd> <kbd>→</kbd>
+            <span>Rotate Previous / Next</span>
+          </div>
+          <div class="control-item">
+            <kbd>Space</kbd>
+            <span>Toggle Auto-Rotation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
