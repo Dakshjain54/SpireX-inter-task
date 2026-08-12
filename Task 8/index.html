@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeNest Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="pricing-container">
+    <header class="pricing-header">
+      <span class="badge">CodeNest</span>
+      <h1> Pricing for Developers & Teams</h1>
+      <p>Build, deploy, and scale your applications with simple, predictable pricing.</p>
+    </header>
+
+    <div class="pricing-grid">
+      <div class="card">
+        <div class="card-header">
+          <h3>Starter</h3>
+          <p class="plan-desc">For hobbyists and side projects</p>
+          <div class="price">
+            <span class="amount">$9</span>
+            <span class="period">/ month</span>
+          </div>
+        </div>
+
+        <ul class="features-list">
+          <li><span class="check">✓</span> 1,000 API Requests / day</li>
+          <li><span class="check">✓</span> 3 Active Workspaces</li>
+          <li><span class="check">✓</span> Community Discord Support</li>
+        </ul>
+
+        <button class="btn btn-secondary plan-btn" data-plan="Starter">Get Started</button>
+      </div>
+
+      <div class="card card-popular">
+        <div class="popular-tag">Most Popular</div>
+        <div class="card-header">
+          <h3>Pro Developer</h3>
+          <p class="plan-desc">For active developers and growing products</p>
+          <div class="price">
+            <span class="amount">$29</span>
+            <span class="period">/ month</span>
+          </div>
+        </div>
+
+        <ul class="features-list">
+          <li><span class="check">✓</span> 50,000 API Requests / day</li>
+          <li><span class="check">✓</span> 15 Active Workspaces</li>
+          <li><span class="check">✓</span> Custom Webhooks & Logs</li>
+          <li><span class="check">✓</span> Priority Email Support</li>
+        </ul>
+
+        <button class="btn btn-primary plan-btn" data-plan="Pro Developer">Choose Pro</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Team & Scale</h3>
+          <p class="plan-desc">For engineering teams and production workloads</p>
+          <div class="price">
+            <span class="amount">$79</span>
+            <span class="period">/ month</span>
+          </div>
+        </div>
+
+        <ul class="features-list">
+          <li><span class="check">✓</span> Unlimited API Requests</li>
+          <li><span class="check">✓</span> Unlimited Workspaces</li>
+          <li><span class="check">✓</span> SSO & Team Permissions</li>
+          <li><span class="check">✓</span> 24/7 Dedicated Support</li>
+        </ul>
+
+        <button class="btn btn-secondary plan-btn" data-plan="Team & Scale">Get Team</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="msg" class="msg">
+    <span class="msg-icon">✓</span>
+    <span id="msg-text">Plan selected!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
