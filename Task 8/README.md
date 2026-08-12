@@ -1,27 +1,102 @@
-# Simple Premium Pricing Cards
+# 💳 Pricing Cards
 
-A clean, responsive, modern SaaS Pricing Cards component built using vanilla web technologies.
+A simple, attractive, and responsive **Pricing Cards Section** built using **HTML5, CSS3, and Vanilla JavaScript**.
 
-## 🚀 Features
+The project displays three pricing plans with features, pricing, highlighted popular plan, hover animations, and interactive CTA buttons.
 
-- **Dark Premium Aesthetic**: Glassmorphism cards with glowing borders and smooth gradients.
-- **3 Pricing Tiers**: Basic ($9/mo), Pro ($19/mo - Most Popular highlight), and Premium ($39/mo).
-- **Smooth Animations**: Subtle hover elevation (`translateY(-8px)`), scale highlight for popular card, shadow glow transitions.
-- **Interactive UI**: Clickable action buttons with a floating toast notification system.
-- **Fully Responsive**: Grid layout that seamlessly switches from 3 columns on desktop to a clean single column on mobile screens.
-- **Zero Dependencies**: Built pure with HTML5, CSS3, and Vanilla JavaScript.
+---
 
-## 📁 Project Structure
+## ✨ Features
+
+* 💳 3 pricing plans
+* ⭐ Popular plan highlight
+* 📋 Feature lists
+* 🔘 Interactive CTA buttons
+* 🔔 Plan selection notification
+* ✨ Smooth hover animations
+* 📱 Fully responsive design
+* 🎨 Modern premium UI
+* ⚡ Lightweight and minimal code
+
+---
+
+## 📸 Preview
+https://pricing-cards08.netlify.app/
+
+---
+
+## 🛠️ Technologies Used
+
+* **HTML5** — Structure
+* **CSS3** — Styling, layout, responsiveness, and animations
+* **Vanilla JavaScript** — Button interactions and notifications
+
+No external frameworks or libraries are used.
+
+---
+
+## 📂 Project Structure
 
 ```text
 pricing-cards/
 │
-├── index.html   # Main HTML document with semantic structure
-├── style.css    # CSS3 styling, grid, variables & responsive design
-├── script.js     # Vanilla JS interaction & toast notifications
-└── README.md    # Documentation
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 ```
 
-## 🛠️ Usage
+---
 
-No installation or build steps required. Simply open `index.html` in any web browser.
+## 🎨 Design
+
+The pricing section uses a modern SaaS-style design with:
+
+* Dark background
+* Rounded cards
+* Gradient accents
+* Soft shadows
+* Hover effects
+* Highlighted Pro plan
+* Responsive layout
+
+The **Pro** plan is visually emphasized as the recommended option.
+
+---
+
+## 📱 Responsive Design
+
+The layout automatically adapts to different screen sizes.
+
+### Desktop
+
+```text
+Basic     Pro     Premium
+```
+
+### Mobile
+
+```text
+Basic
+  ↓
+Pro
+  ↓
+Premium
+```
+
+---
+
+
+## 🎯 Project Objective
+
+The objective of this project was to create a **clean, responsive, and visually appealing pricing section** while keeping the implementation simple and easy to understand.
+
+---
+
+## 👨‍💻 Author
+
+**Daksh Jain**
+
+B.Tech CSE — AI/ML Student
+
+---
