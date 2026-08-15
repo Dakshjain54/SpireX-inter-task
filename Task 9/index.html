@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <h1>Typing Speed Test</h1>
+      <p>Test and improve your typing speed and accuracy.</p>
+    </header>
+
+    <div class="controls-bar">
+      <div class="control-group">
+        <label for="categorySelect">Category</label>
+        <select id="categorySelect">
+          <option value="general">General</option>
+          <option value="technology">Technology</option>
+          <option value="programming">Programming</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="difficultySelect">Difficulty</label>
+        <select id="difficultySelect">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="timeSelect">Time Limit</label>
+        <select id="timeSelect">
+          <option value="30">30 Seconds</option>
+          <option value="60" selected>60 Seconds</option>
+          <option value="120">120 Seconds</option>
+        </select>
+      </div>
+    </div>
+
+    <main class="test-card">
+      <div class="paragraph-box" id="paragraphBox"></div>
+
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Progress</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label">WPM</span>
+          <span class="stat-value" id="wpm">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Accuracy</span>
+          <span class="stat-value" id="accuracy">100%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Mistakes</span>
+          <span class="stat-value" id="mistakes">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Time Left</span>
+          <span class="stat-value" id="timer">01:00</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Best WPM</span>
+          <span class="stat-value" id="bestWpmDisplay">0</span>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <textarea id="typingArea" placeholder="Start typing here..."></textarea>
+      </div>
+
+      <div class="actions">
+        <button id="restartBtn" class="btn">Try Again</button>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="resultModal">
+    <div class="modal-card">
+      <h2>Test Complete! 🎉</h2>
+      <p class="feedback-msg" id="feedbackMsg"></p>
+
+      <div class="results-grid">
+        <div class="result-box">
+          <span class="result-label">Speed</span>
+          <span class="result-value" id="finalWpm">0 WPM</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Accuracy</span>
+          <span class="result-value" id="finalAccuracy">100%</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Mistakes</span>
+          <span class="result-value" id="finalMistakes">0</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Time Taken</span>
+          <span class="result-value" id="finalTime">00:00</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Characters</span>
+          <span class="result-value" id="finalChars">0</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Best WPM</span>
+          <span class="result-value" id="finalBestWpm">0</span>
+        </div>
+      </div>
+
+      <button id="modalRestartBtn" class="btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
