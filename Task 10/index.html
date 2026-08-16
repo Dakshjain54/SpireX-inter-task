@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack - Personal Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div>
+                <h1 class="app-title">JobTrack</h1>
+                <p class="app-subtitle">Track your job applications in one place.</p>
+            </div>
+            <button id="openModalBtn" class="btn btn-primary">+ Add Application</button>
+        </header>
+
+        <section class="stats-section">
+            <div class="stat-card">
+                <span class="stat-label">Total</span>
+                <span id="statTotal" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Applied</span>
+                <span id="statApplied" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Interview</span>
+                <span id="statInterview" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Selected</span>
+                <span id="statSelected" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Rejected</span>
+                <span id="statRejected" class="stat-value">0</span>
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <input type="text" id="searchInput" placeholder="Search by company or job title...">
+            <select id="statusFilter">
+                <option value="all">All Statuses</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+        </section>
+
+        <main class="list-section">
+            <div class="table-wrapper">
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Job Title</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appTableBody"></tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <h3 id="emptyStateTitle">No applications found</h3>
+                <p id="emptyStateSubtitle">Add a new application to start tracking.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="appModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Application</h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+
+            <form id="applicationForm">
+                <input type="hidden" id="appId">
+
+                <div id="formErrorMessage" class="form-error" style="display: none;">
+                    Please fill in all required fields (*).
+                </div>
+
+                <div class="form-group">
+                    <label for="companyInput">Company Name *</label>
+                    <input type="text" id="companyInput" placeholder="e.g. Google" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="titleInput">Job Title *</label>
+                    <input type="text" id="titleInput" placeholder="e.g. Software Engineer Intern" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="dateInput">Applied Date *</label>
+                        <input type="date" id="dateInput" required>
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="statusInput">Status *</label>
+                        <select id="statusInput" required>
+                            <option value="Applied">Applied</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Selected">Selected</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="linkInput">Job Link (Optional)</label>
+                    <input type="url" id="linkInput" placeholder="https://careers.company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="notesInput">Notes (Optional)</label>
+                    <textarea id="notesInput" rows="3" placeholder="Add any details or notes..."></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelFormBtn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" id="saveFormBtn" class="btn btn-primary">Save Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
