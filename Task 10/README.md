@@ -1,68 +1,103 @@
-# 💼 JobTrack - Personal Job Application Tracker
+# 💼 Job Application Tracker
 
-A clean, practical, and responsive personal **Job Application Tracker** web application built using standard modern web technologies. Designed specifically as a student/personal portfolio mini-project.
+A simple and responsive **Job Application Tracker** built using **HTML5, CSS3, and Vanilla JavaScript**.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+The application helps users manage their job applications by adding, searching, filtering, editing, and deleting application records.
 
 ---
 
-## 🎯 Features
-
-* **➕ Add Job Application**: Simple form with validation for Company, Job Title, Applied Date, Status, Link, and Notes.
-* **📋 Application Table & Cards**: Clean table view for desktop and responsive cards layout for mobile screens.
-* **📊 Dynamic Statistics**: Auto-updating statistics counter cards (`Total`, `Applied`, `Interview`, `Selected`, `Rejected`).
-* **🔍 Instant Search**: Real-time filtering by company name or job title while typing.
-* **🎛️ Status Filter**: Filter applications by status (`Applied`, `Interview`, `Selected`, `Rejected`). Combined with search query.
-* **✏️ Edit Application**: Update company, title, date, status, link, and notes.
-* **🗑️ Delete Application**: Quick modal confirmation before permanently removing an application entry.
-* **💾 Local Storage Persistence**: All data is automatically saved in `localStorage` in your browser.
-* **🔔 User Toast Feedback**: Natural notifications for adding, updating, and deleting applications.
+## 📸 Preview
+https://job-application-tracker10.netlify.app/
 
 ---
 
-## 🎨 Tech Stack
 
-* **HTML5**: Semantic tags (`<header>`, `<main>`, `<section>`, `<table>`, `<form>`).
-* **CSS3**: Custom CSS variables, Flexbox & CSS Grid, custom badge styles, media queries for responsiveness. No frameworks used.
-* **Vanilla JavaScript (ES6)**: Clean DOM manipulation, event handlers, Array filtering, objects, and LocalStorage API.
+## ✨ Features
+
+* ➕ Add job applications
+* 🏢 Store company name
+* 💼 Store job title
+* 📅 Store applied date
+* 🏷️ Track application status
+* 🔍 Search applications
+* 🎛️ Filter applications by status
+* ✏️ Edit applications
+* 🗑️ Delete applications
+* 📊 View application statistics
+* 💾 Save data using LocalStorage
+* 🔔 Toast notifications
+* 📱 Responsive design
+* ✨ Simple hover animations
 
 ---
 
-## 🚀 How to Run
 
-1. Clone or download this project folder.
-2. Open `index.html` directly in any web browser (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.).
-3. No build tools, Node.js, or server setup required!
+## 🛠️ Technologies Used
+
+* **HTML5** — Page structure and forms
+* **CSS3** — Styling, layout, responsive design, and animations
+* **Vanilla JavaScript** — Application logic and DOM manipulation
+* **LocalStorage** — Persistent application data
+
+No external frameworks or libraries are used.
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
-```text
+```text id="6o5mwd"
 job-application-tracker/
 │
-├── index.html       # Semantic HTML layout and modals
-├── style.css        # Clean responsive styles and theme design
-├── script.js        # Core logic, state management, LocalStorage, and DOM rendering
-└── README.md        # Documentation
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 ```
 
 ---
 
-## 📝 Data Structure
+## 🎨 Design
 
-Applications are stored in browser `localStorage` as JSON objects:
+The project uses a clean and practical dashboard design with:
 
-```javascript
-{
-    "id": 1723450000001,
-    "company": "Google",
-    "title": "Software Engineer Intern",
-    "date": "2026-08-12",
-    "status": "Interview",
-    "link": "https://careers.google.com",
-    "notes": "Technical interview scheduled for next week"
-}
-```
+* Light background
+* White cards
+* Simple accent color
+* Rounded corners
+* Small shadows
+* Status badges
+* Responsive application list
+* Minimal animations
+
+The design focuses on **functionality and usability** rather than unnecessary visual effects.
+
+---
+
+## 📱 Responsive Design
+
+The application works across:
+
+* 💻 Desktop
+* 💻 Laptop
+* 📱 Tablet
+* 📱 Mobile
+
+On smaller screens, application rows automatically adapt into a mobile-friendly layout.
+
+---
+
+## 🎯 Project Objective
+
+The objective of this project was to create a **simple and practical job application management tool** while learning how to build an interactive frontend application using HTML, CSS, and JavaScript.
+
+The project focuses on **CRUD functionality, data persistence, filtering, and responsive UI design**.
+
+---
+
+## 👨‍💻 Author
+
+**Daksh Jain**
+
+B.Tech CSE — AI/ML Student
+
+---
