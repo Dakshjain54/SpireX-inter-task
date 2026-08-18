@@ -1,37 +1,98 @@
-# 📚 BookShelf — Online Book Library
+# 📚 Online Book Library
 
-A simple, practical **Online Book Library** built using standard **HTML5, CSS3, and Vanilla JavaScript**.
+A simple, attractive, and responsive **Online Book Library** built using **HTML5, CSS3, and Vanilla JavaScript**.
 
-This project is written in a direct, student-developer style with clear functionality, clean styling, and zero external framework dependencies.
+The application allows users to browse books, search and filter them, view book details, and save their favorite books to a personal library.
 
 ---
 
-## 📁 Project Files
+## ✨ Features
 
-```text
-Task 11/
-├── index.html     # Page structure (Header, Hero, Collection, My Books, Modal, Toast)
-├── style.css      # Custom styling, layout grid, modal styling, and responsive media queries
-├── script.js      # Book array, rendering logic, live search/filter, and LocalStorage sync
-└── README.md      # Project documentation
+* 📚 Browse books
+* 🔍 Search books by title or author
+* 🎛️ Filter books by category
+* 👁️ View detailed book information
+* ❤️ Add books to My Books
+* 🗑️ Remove saved books
+* 🔢 Display saved book count
+* 💾 Store saved books using LocalStorage
+* 🔔 Toast notifications
+* ✨ Simple hover animations
+* 📱 Responsive design
+
+---
+
+
+## 🛠️ Technologies Used
+
+* **HTML5** — Website structure
+* **CSS3** — Styling, responsive layout, and animations
+* **Vanilla JavaScript** — Search, filtering, modal, and library functionality
+* **LocalStorage** — Saving user-selected books
+
+No external frameworks or JavaScript libraries are used.
+
+---
+
+## 📂 Project Structure
+
+```text id="3x7n1k"
+online-book-library/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 ```
 
 ---
 
-## 🎯 Features
+## 🎨 Design
 
-- 📖 **Browse Books**: Display grid of 10 classic & modern books.
-- 🔍 **Live Search**: Filter books dynamically by title or author while typing.
-- 🎛️ **Category Filter**: Dropdown to filter by category (*Classic*, *Fiction*, *Fantasy*, *Self Help*, *Finance*).
-- 👁️ **Book Modal**: Pop-up modal showing cover, author, category, published year, and description.
-- ❤️ **My Books & LocalStorage**: Save favorite books to browser LocalStorage so they persist after page refresh.
-- 🗑️ **Remove Books**: Remove saved books anytime and dynamically update the count badge in the header.
-- 🔔 **Toast Notification**: Simple pop-up message feedback when adding/removing books.
-- 📱 **Responsive Grid**: 4 columns on desktop, 2-3 on tablet, 1 on mobile.
+The project uses a simple and clean library-style interface with:
+
+* Light background
+* Clean navigation
+* Book cards
+* Rounded corners
+* Small shadows
+* Simple accent colors
+* Responsive grid
+* Subtle hover effects
+
+The design focuses on **usability and simplicity** instead of unnecessary visual effects.
 
 ---
 
-## 🚀 How to Run
+## 📱 Responsive Design
 
-1. Open [`index.html`](file:///c:/Users/daksh/OneDrive/Desktop/internship%203/Task%2011/index.html) directly in any web browser.
-2. No build tools, Node.js, or server setup required.
+The library works across:
+
+* 💻 Desktop
+* 💻 Laptop
+* 📱 Tablet
+* 📱 Mobile
+
+The book grid automatically adjusts based on the screen size.
+
+---
+
+## 🎯 Project Objective
+
+The objective of this project was to create a **simple and functional digital library** where users can browse, search, view, and manage books using only frontend technologies.
+
+The project focuses on **DOM manipulation, filtering, LocalStorage, and responsive design**.
+
+---
+
+## 👨‍💻 Author
+
+**Daksh Jain**
+
+B.Tech CSE — AI/ML Student
+
+---
+
+## 📄 License
+
+This project was created for **educational and learning purposes**.
