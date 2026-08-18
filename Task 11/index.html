@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookShelf - Online Book Library</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#home" class="logo">📚 BookShelf</a>
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#books" class="nav-link">Books</a>
+        <a href="#my-books" class="nav-link">My Books (<span id="savedCount">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <h1>Your Digital Book Library</h1>
+      <p>Browse, search and save your favorite books in one place.</p>
+      <a href="#books" class="btn btn-primary">Browse Books</a>
+    </div>
+  </section>
+
+  <section id="books" class="section">
+    <div class="container">
+      <h2 class="section-title">Library Collection</h2>
+
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search books by title or author...">
+        <select id="categoryFilter">
+          <option value="All">All Categories</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Self Help">Self Help</option>
+          <option value="Finance">Finance</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Classic">Classic</option>
+        </select>
+      </div>
+
+      <div id="bookGrid" class="book-grid"></div>
+      <p id="noResults" class="no-results" style="display: none;">No matching books found.</p>
+    </div>
+  </section>
+
+  <section id="my-books" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">My Books</h2>
+      <div id="myBooksGrid" class="book-grid"></div>
+      <p id="emptyMyBooks" class="empty-msg">No saved books yet. Start adding books to your library.</p>
+    </div>
+  </section>
+
+  <div id="bookModal" class="modal">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn">&times;</button>
+      <div class="modal-body">
+        <img id="modalCover" src="" alt="Book Cover">
+        <div class="modal-details">
+          <h2 id="modalTitle"></h2>
+          <p id="modalAuthor" class="author"></p>
+          <p class="meta">Category: <span id="modalCategory"></span> | Published: <span id="modalYear"></span></p>
+          <p id="modalDescription" class="description"></p>
+          <button id="modalSaveBtn" class="btn btn-primary"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <footer>
+    <p>BookShelf — Online Book Library Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
