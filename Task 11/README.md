@@ -92,7 +92,3 @@ The project focuses on **DOM manipulation, filtering, LocalStorage, and responsi
 B.Tech CSE — AI/ML Student
 
 ---
-
-## 📄 License
-
-This project was created for **educational and learning purposes**.
