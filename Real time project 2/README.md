@@ -23,8 +23,3 @@ online-examination-system/
 ```
 
 ---
-
-## 💻 How to Run
-
-1. Open `index.html` directly in any web browser.
-2. No build tools, web servers, or external libraries required.
