@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="start-screen" class="card">
+            <h1>Online Examination System</h1>
+            <p class="subtitle">10 Questions | 5 Minutes</p>
+
+            <div class="input-group">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" placeholder="Enter your name">
+                <p id="error-message" class="error-text"></p>
+            </div>
+
+            <button class="btn" onclick="startExam()">Start Exam</button>
+        </div>
+
+        <div id="exam-screen" class="card hidden">
+            <div class="exam-header">
+                <div>Student: <strong id="student-display">--</strong></div>
+                <div>Time: <strong id="timer-display">05:00</strong></div>
+            </div>
+
+            <div class="progress-box">
+                <div id="question-count">Question 1 of 10</div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="question-box">
+                <h3 id="question-text"></h3>
+                <div id="options-container" class="options"></div>
+            </div>
+
+            <div class="nav-btns">
+                <button id="prev-btn" class="btn btn-secondary" onclick="previousQuestion()">Previous</button>
+                <button id="next-btn" class="btn" onclick="nextQuestion()">Next</button>
+                <button id="submit-btn" class="btn btn-submit hidden" onclick="submitExam()">Submit Exam</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="card hidden">
+            <h2>Exam Completed!</h2>
+
+            <div class="result-details">
+                <p><strong>Score:</strong> <span id="res-score">0 / 10</span></p>
+                <p><strong>Percentage:</strong> <span id="res-percentage">0%</span></p>
+                <p><strong>Correct:</strong> <span id="res-correct">0</span></p>
+                <p><strong>Wrong:</strong> <span id="res-wrong">0</span></p>
+            </div>
+
+            <button class="btn" onclick="resetExam()">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
