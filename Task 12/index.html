@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently — Event Registration System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">⚡ Evently</a>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">☰</button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#events-section" class="nav-link">Events</a>
+                <a href="#registrations-section" class="nav-link">
+                    My Registrations <span class="badge" id="nav-badge">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Find Your Next Event</h1>
+            <p>Discover workshops, tech events and experiences worth attending.</p>
+            <a href="#events-section" class="btn btn-primary btn-hero">Explore Events</a>
+        </div>
+    </section>
+
+    <main class="main-container">
+
+        <section class="events-section" id="events-section">
+            <div class="section-header">
+                <h2>Upcoming Events</h2>
+                <p>Browse through available events and secure your spot today.</p>
+            </div>
+
+            <div class="controls-card">
+                <div class="search-box">
+                    <span class="icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Search events by title, category, or location...">
+                </div>
+
+                <div class="filter-box">
+                    <select id="category-select">
+                        <option value="All">All Categories</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Business">Business</option>
+                        <option value="Design">Design</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Hackathon">Hackathon</option>
+                        <option value="Conference">Conference</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="events-grid" id="events-grid"></div>
+
+            <div class="no-results hidden" id="no-results">
+                <h3>No events found</h3>
+                <p>Try searching for a different keyword or category.</p>
+                <button class="btn btn-outline" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </section>
+
+        <section class="registrations-section" id="registrations-section">
+            <div class="section-header">
+                <h2>My Registrations</h2>
+                <p>Manage events you have registered for.</p>
+            </div>
+
+            <div class="registrations-grid" id="registrations-grid"></div>
+
+            <div class="empty-registrations hidden" id="empty-registrations">
+                <h3>No registrations yet</h3>
+                <p>You haven't registered for any events. Browse upcoming events to get started!</p>
+                <a href="#events-section" class="btn btn-primary">Explore Events</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Evently — Built with HTML5, CSS3, &amp; Vanilla JS</p>
+    </footer>
+
+    <div class="modal-overlay hidden" id="details-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('details-modal')">&times;</button>
+            <div class="modal-image-wrap">
+                <img id="modal-details-img" src="" alt="Event banner">
+            </div>
+            <div class="modal-body">
+                <span class="badge-category" id="modal-details-category">Category</span>
+                <h2 id="modal-details-title">Event Title</h2>
+                <div class="meta-row">
+                    <span>📅 <strong id="modal-details-date">Date</strong></span>
+                    <span>🕐 <strong id="modal-details-time">Time</strong></span>
+                    <span>📍 <strong id="modal-details-location">Location</strong></span>
+                </div>
+                <div class="desc-box">
+                    <h4>About This Event</h4>
+                    <p id="modal-details-desc">Description</p>
+                </div>
+                <button class="btn btn-primary btn-full" id="modal-details-reg-btn">Register Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="registration-modal">
+        <div class="modal-card modal-sm">
+            <button class="modal-close" onclick="closeModal('registration-modal')">&times;</button>
+            <div class="modal-header">
+                <h3>Register for Event</h3>
+                <p class="subtext" id="reg-event-title">Event Name</p>
+            </div>
+            <form id="reg-form" class="form">
+                <input type="hidden" id="reg-event-id">
+
+                <div class="form-group">
+                    <label for="reg-name">Full Name *</label>
+                    <input type="text" id="reg-name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Email Address *</label>
+                    <input type="email" id="reg-email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-phone">Phone Number *</label>
+                    <input type="tel" id="reg-phone" placeholder="Enter phone number" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline"
+                        onclick="closeModal('registration-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Confirm Registration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
